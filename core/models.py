@@ -56,7 +56,7 @@ class Employee(Base):
     name = models.CharField('Name', max_length=100)
     role = models.ForeignKey('core.Role', verbose_name='Role', on_delete=models.CASCADE)
     bio = models.TextField('Bio', max_length=450)
-    image = StdImageField('Image', upload_to=get_file_path, variations={ 'thumbnail': { 'width': 400, 'height': 480 } }) # type: ignore
+    image = StdImageField('Image', upload_to=get_file_path, variations={ 'thumbnail': { 'width': 400, 'height': 480, 'crop': True } }) # type: ignore
     facebook = models.CharField('Facebook', max_length=150, default='#')
     twitter = models.CharField('Twitter', max_length=150, default='#')
     Instagram = models.CharField('Instagram', max_length=150, default='#')
