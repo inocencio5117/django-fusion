@@ -1,0 +1,20 @@
+services:
+  web:
+    image: python:3.11
+    restart: always
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    depends_on:
+      - db
+  db:
+    image: postgres:16.0
+    environment:
+      POSTGRES_USER: geek
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: fusion
+    ports:
+      - "5432:5432"
